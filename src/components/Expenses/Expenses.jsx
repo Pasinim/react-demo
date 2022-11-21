@@ -1,6 +1,6 @@
 import "./Expenses.css";
 import ExpenseItem from "./ExpenseItem";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
@@ -12,7 +12,12 @@ function Expenses(props) {
     );
   };
 
-  const [currentItems, setCurrentItems] = useState(props.items);
+  const [currentItems, setCurrentItems] = useState([]);
+
+  //Per aggiornare gli items ogni volta che vengono aggiornati
+  useEffect(() => {
+    setCurrentItems(props.items);
+  }, [props.items]);
 
   return (
     <div>
