@@ -4,13 +4,16 @@ import React, { useEffect, useState } from "react";
 import ExpensesChart from "./ExpensesChart";
 import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
-import ExpensesList from "./ExpensesList";
 
 function Expenses(props) {
   const filterChangeHandler = (selectedYear) => {
     setCurrentItems(
       props.items.filter((x) => x.date.getFullYear() == selectedYear)
     );
+  };
+
+  const deleteCurrentItem = (id) => {
+    setCurrentItems((prevItems) => prevItems.filter((x) => x.id != id));
   };
 
   const [currentItems, setCurrentItems] = useState([]);
@@ -24,10 +27,12 @@ function Expenses(props) {
   if (currentItems.length > 0) {
     expensesContent = currentItems.map((x) => (
       <ExpenseItem
-        key={x.title}
+        key={x.id}
+        id={x.id}
         title={x.title}
         amount={x.amount}
         date={x.date}
+        deleteCurrentItem={deleteCurrentItem}
       />
     ));
   }

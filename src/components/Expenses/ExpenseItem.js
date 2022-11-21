@@ -13,6 +13,12 @@ const ExpenseItem = (props) => {
     setTitle("Updated");
     console.log(title);
   };
+
+  const deleteHandler = () => {
+    console.log(props.id);
+    props.deleteCurrentItem(props.id);
+  };
+
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
@@ -20,7 +26,12 @@ const ExpenseItem = (props) => {
         <h2> {title} </h2>
         <div className="expense-item__price"> ${props.amount} </div>
       </div>
-      <button onClick={clickHandler}>Change Title</button>
+      <div className="expense-item__actions">
+        <button type="button" onClick={clickHandler}>
+          Change Title
+        </button>
+        <button onClick={deleteHandler}> Delete</button>
+      </div>
     </Card>
   );
 };
