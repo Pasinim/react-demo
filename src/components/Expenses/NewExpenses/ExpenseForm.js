@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -50,10 +50,10 @@ const ExpenseForm = () => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    console.log(expenseData);
-    setEnteredTitle(''); //quando invio un nuovo expense pulisce l'input
-    setEnteredDate('');
-    setEnteredAmount('');
+    props.onSaveExpenseData(expenseData); //expenseData viene passato dal figlio newExpense
+    setEnteredTitle(""); //quando invio un nuovo expense pulisce l'input
+    setEnteredDate("");
+    setEnteredAmount("");
   };
 
   return (
@@ -74,7 +74,7 @@ const ExpenseForm = () => {
             min="0.01"
             step="0.01"
             value={enteredAmount} //valore di default quando carica la pagina
-            onChange={amountChangeHandler}
+            onChange={amountChangeHandler} //ascolto per l'input dell'utente
           />
         </div>
         <div className="new-expense__control">
