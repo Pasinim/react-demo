@@ -16,7 +16,7 @@ const ExpenseItem = (props) => {
 
   const deleteHandler = () => {
     console.log(props.id);
-    props.deleteCurrentItem(props.id);
+    props.deleteCurrentItemPadre(props.id);
   };
 
   return (

@@ -32,7 +32,7 @@ function Expenses(props) {
         title={x.title}
         amount={x.amount}
         date={x.date}
-        deleteCurrentItem={deleteCurrentItem}
+        deleteCurrentItemPadre={deleteCurrentItem}
       />
     ));
   }
