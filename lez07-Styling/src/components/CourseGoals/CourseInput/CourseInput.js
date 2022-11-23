@@ -40,7 +40,7 @@ const CourseInput = (props) => {
           onChange={goalInputChangeHandler}
         />
       </div>
-      <Button type="submit">Add Goal</Button>
+      <Button type="submit"></Button>
     </form>
   );
 };
