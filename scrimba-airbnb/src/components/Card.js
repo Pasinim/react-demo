@@ -1,25 +1,18 @@
 import React from "react";
 
-export default function Card({
-  image,
-  rating,
-  revs,
-  country,
-  description,
-  price,
-}) {
+export default function Card(props) {
   return (
     <div className="card">
-      <img src={image} className="hero--card" />
+      <img src={props.img} className="hero--card" />
       <div className="card--stats">
         <img src="images/star.png" className="card--star" />
-        <span className="grey">{rating} </span>
-        <span className="grey">{revs}</span>
-        <span className="grey">{country}</span>
+        <span className="grey">{props.rating} </span>
+        <span className="grey">({props.revs}) </span>
+        <span className="grey">{props.location} </span>
       </div>
-      <p>{description} </p>
+      <p>{props.title} </p>
       <p>
-        <span className="bold"> {price}$ </span> / persona
+        <span className="bold"> {props.price}$ </span> / persona
       </p>
     </div>
   );
